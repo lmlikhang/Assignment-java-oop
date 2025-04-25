@@ -43,13 +43,13 @@ public class Sales_Manager extends javax.swing.JFrame {
         SupplierManagement_btn = new javax.swing.JButton();
         Logout_btn = new javax.swing.JButton();
         Panels = new javax.swing.JPanel();
-        SalesDataManagement_Panel = new javax.swing.JPanel();
+        ListOfItem_Panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        PurchaseRequisition_panel = new javax.swing.JPanel();
+        ListOfSuppliers_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        PRViewing_panel = new javax.swing.JPanel();
+        DisplayRequisition_panel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        ItemManagement_panel = new javax.swing.JPanel();
+        GeneratePurchaseOrder_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         SupplierManagement_panel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -79,9 +79,11 @@ public class Sales_Manager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
-        SDM_btn.setText("Sales Data Management");
+        SDM_btn.setText("List of items");
         SDM_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SDM_btnActionPerformed(evt);
@@ -92,28 +94,28 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sales manager");
 
-        PR_btn.setText("Purchase Requisition");
+        PR_btn.setText("List of Suppliers");
         PR_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PR_btnActionPerformed(evt);
             }
         });
 
-        PRV_btn.setText("PR Viewing");
+        PRV_btn.setText("Display Requisition");
         PRV_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PRV_btnActionPerformed(evt);
             }
         });
 
-        ItemManagemant_btn.setText("Item Management");
+        ItemManagemant_btn.setText("Generate Purchase Order");
         ItemManagemant_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemManagemant_btnActionPerformed(evt);
             }
         });
 
-        SupplierManagement_btn.setText("Supplier Management");
+        SupplierManagement_btn.setText("Purchase Order");
         SupplierManagement_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SupplierManagement_btnActionPerformed(evt);
@@ -165,95 +167,115 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Panels.setBackground(new java.awt.Color(255, 255, 255));
+        Panels.setBackground(new java.awt.Color(0, 0, 0));
         Panels.setVerifyInputWhenFocusTarget(false);
         Panels.setLayout(new java.awt.CardLayout());
 
-        jLabel2.setText("SalesDataManagement");
+        ListOfItem_Panel.setBackground(new java.awt.Color(51, 51, 51));
 
-        javax.swing.GroupLayout SalesDataManagement_PanelLayout = new javax.swing.GroupLayout(SalesDataManagement_Panel);
-        SalesDataManagement_Panel.setLayout(SalesDataManagement_PanelLayout);
-        SalesDataManagement_PanelLayout.setHorizontalGroup(
-            SalesDataManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SalesDataManagement_PanelLayout.createSequentialGroup()
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("List of items");
+
+        javax.swing.GroupLayout ListOfItem_PanelLayout = new javax.swing.GroupLayout(ListOfItem_Panel);
+        ListOfItem_Panel.setLayout(ListOfItem_PanelLayout);
+        ListOfItem_PanelLayout.setHorizontalGroup(
+            ListOfItem_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListOfItem_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addContainerGap(449, Short.MAX_VALUE))
         );
-        SalesDataManagement_PanelLayout.setVerticalGroup(
-            SalesDataManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SalesDataManagement_PanelLayout.createSequentialGroup()
+        ListOfItem_PanelLayout.setVerticalGroup(
+            ListOfItem_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListOfItem_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
-        Panels.add(SalesDataManagement_Panel, "card2");
+        Panels.add(ListOfItem_Panel, "card2");
 
-        jLabel3.setText("Purchase Requistion");
+        ListOfSuppliers_panel.setBackground(new java.awt.Color(51, 51, 51));
 
-        javax.swing.GroupLayout PurchaseRequisition_panelLayout = new javax.swing.GroupLayout(PurchaseRequisition_panel);
-        PurchaseRequisition_panel.setLayout(PurchaseRequisition_panelLayout);
-        PurchaseRequisition_panelLayout.setHorizontalGroup(
-            PurchaseRequisition_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PurchaseRequisition_panelLayout.createSequentialGroup()
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("List of Suppliers");
+
+        javax.swing.GroupLayout ListOfSuppliers_panelLayout = new javax.swing.GroupLayout(ListOfSuppliers_panel);
+        ListOfSuppliers_panel.setLayout(ListOfSuppliers_panelLayout);
+        ListOfSuppliers_panelLayout.setHorizontalGroup(
+            ListOfSuppliers_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListOfSuppliers_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(481, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
-        PurchaseRequisition_panelLayout.setVerticalGroup(
-            PurchaseRequisition_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PurchaseRequisition_panelLayout.createSequentialGroup()
+        ListOfSuppliers_panelLayout.setVerticalGroup(
+            ListOfSuppliers_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListOfSuppliers_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
-        Panels.add(PurchaseRequisition_panel, "card3");
+        Panels.add(ListOfSuppliers_panel, "card3");
 
-        jLabel4.setText("PR Viewing");
+        DisplayRequisition_panel.setBackground(new java.awt.Color(51, 51, 51));
 
-        javax.swing.GroupLayout PRViewing_panelLayout = new javax.swing.GroupLayout(PRViewing_panel);
-        PRViewing_panel.setLayout(PRViewing_panelLayout);
-        PRViewing_panelLayout.setHorizontalGroup(
-            PRViewing_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PRViewing_panelLayout.createSequentialGroup()
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Display Requisition");
+
+        javax.swing.GroupLayout DisplayRequisition_panelLayout = new javax.swing.GroupLayout(DisplayRequisition_panel);
+        DisplayRequisition_panel.setLayout(DisplayRequisition_panelLayout);
+        DisplayRequisition_panelLayout.setHorizontalGroup(
+            DisplayRequisition_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DisplayRequisition_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
-        PRViewing_panelLayout.setVerticalGroup(
-            PRViewing_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PRViewing_panelLayout.createSequentialGroup()
+        DisplayRequisition_panelLayout.setVerticalGroup(
+            DisplayRequisition_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DisplayRequisition_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
-        Panels.add(PRViewing_panel, "card4");
+        Panels.add(DisplayRequisition_panel, "card4");
 
+        GeneratePurchaseOrder_panel.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("SalesDataManagement");
 
-        javax.swing.GroupLayout ItemManagement_panelLayout = new javax.swing.GroupLayout(ItemManagement_panel);
-        ItemManagement_panel.setLayout(ItemManagement_panelLayout);
-        ItemManagement_panelLayout.setHorizontalGroup(
-            ItemManagement_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ItemManagement_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout GeneratePurchaseOrder_panelLayout = new javax.swing.GroupLayout(GeneratePurchaseOrder_panel);
+        GeneratePurchaseOrder_panel.setLayout(GeneratePurchaseOrder_panelLayout);
+        GeneratePurchaseOrder_panelLayout.setHorizontalGroup(
+            GeneratePurchaseOrder_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GeneratePurchaseOrder_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
-        ItemManagement_panelLayout.setVerticalGroup(
-            ItemManagement_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ItemManagement_panelLayout.createSequentialGroup()
+        GeneratePurchaseOrder_panelLayout.setVerticalGroup(
+            GeneratePurchaseOrder_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GeneratePurchaseOrder_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
-        Panels.add(ItemManagement_panel, "card5");
+        Panels.add(GeneratePurchaseOrder_panel, "card5");
 
-        jLabel6.setText("Supplier management");
+        SupplierManagement_panel.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Purchase Order");
 
         javax.swing.GroupLayout SupplierManagement_panelLayout = new javax.swing.GroupLayout(SupplierManagement_panel);
         SupplierManagement_panel.setLayout(SupplierManagement_panelLayout);
@@ -262,14 +284,14 @@ public class Sales_Manager extends javax.swing.JFrame {
             .addGroup(SupplierManagement_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(471, Short.MAX_VALUE))
+                .addContainerGap(412, Short.MAX_VALUE))
         );
         SupplierManagement_panelLayout.setVerticalGroup(
             SupplierManagement_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SupplierManagement_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         Panels.add(SupplierManagement_panel, "card6");
@@ -305,28 +327,28 @@ public class Sales_Manager extends javax.swing.JFrame {
 
     private void SDM_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDM_btnActionPerformed
         Panels.removeAll();
-        Panels.add(SalesDataManagement_Panel);
+        Panels.add(ListOfItem_Panel);
         Panels.revalidate();
         Panels.repaint();
     }//GEN-LAST:event_SDM_btnActionPerformed
 
     private void PR_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PR_btnActionPerformed
         Panels.removeAll();
-        Panels.add(PurchaseRequisition_panel);
+        Panels.add(ListOfSuppliers_panel);
         Panels.revalidate();
         Panels.repaint();
     }//GEN-LAST:event_PR_btnActionPerformed
 
     private void PRV_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRV_btnActionPerformed
         Panels.removeAll();
-        Panels.add(PRViewing_panel);
+        Panels.add(DisplayRequisition_panel);
         Panels.revalidate();
         Panels.repaint();
     }//GEN-LAST:event_PRV_btnActionPerformed
 
     private void ItemManagemant_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemManagemant_btnActionPerformed
         Panels.removeAll();
-        Panels.add(ItemManagement_panel);
+        Panels.add(GeneratePurchaseOrder_panel);
         Panels.revalidate();
         Panels.repaint();
     }//GEN-LAST:event_ItemManagemant_btnActionPerformed
@@ -350,16 +372,16 @@ public class Sales_Manager extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DisplayRequisition_panel;
+    private javax.swing.JPanel GeneratePurchaseOrder_panel;
     private javax.swing.JButton ItemManagemant_btn;
-    private javax.swing.JPanel ItemManagement_panel;
+    private javax.swing.JPanel ListOfItem_Panel;
+    private javax.swing.JPanel ListOfSuppliers_panel;
     private javax.swing.JButton Logout_btn;
     private javax.swing.JButton PRV_btn;
-    private javax.swing.JPanel PRViewing_panel;
     private javax.swing.JButton PR_btn;
     private javax.swing.JPanel Panels;
-    private javax.swing.JPanel PurchaseRequisition_panel;
     private javax.swing.JButton SDM_btn;
-    private javax.swing.JPanel SalesDataManagement_Panel;
     private javax.swing.JButton SupplierManagement_btn;
     private javax.swing.JPanel SupplierManagement_panel;
     private javax.swing.JLabel jLabel1;

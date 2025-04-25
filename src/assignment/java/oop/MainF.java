@@ -59,14 +59,17 @@ public class MainF extends javax.swing.JFrame {
         });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username");
 
         jScrollPane1.setViewportView(usernametxt);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Password");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tpe of User");
 
         userBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Sales Manager", "Purchase Manager", "Inventory Manager", "Finance Manager" }));
@@ -78,6 +81,7 @@ public class MainF extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Welcome");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -164,33 +168,38 @@ public class MainF extends javax.swing.JFrame {
         
         if (user != null) {
             if (user.getUsertype().equals(selectedRole)){
-                    if (user.getUsertype().equals("Administrator")) {         
-                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Administrator");
-                    Administrator adminPage = new Administrator();
-                    adminPage.setVisible(true);
-                    this.setVisible(false);
-                } else if (user.getUsertype().equals("Sales Manager")) {
-                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Sales Manager");
-                    Sales_Manager salesPage = new Sales_Manager();
-                    salesPage.setVisible(true);
-                    this.setVisible(false);
-                } else if (user.getUsertype().equals("Purchase Manager")) {
-                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Purchase Manager");
-                    Purchase_Manager purchasePage = new Purchase_Manager();
-                    purchasePage.setVisible(true);
-                    this.setVisible(false);
-                } else if (user.getUsertype().equals("Inventory Manager")) {
-                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Inventory Manager");
-                    Inventory_Manager inventoryPage = new Inventory_Manager();
-                    inventoryPage.setVisible(true);
-                    this.setVisible(false);
-                } else if (user.getUsertype().equals("Finance Manager")) {
-                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Finance Manager");
-                    Finance_Manager financePage = new Finance_Manager();
-                    financePage.setVisible(true);
-                    this.setVisible(false);
-            } else {
-                    JOptionPane.showMessageDialog(rootPane, "Wrong User typr, Username or Password!");
+                switch (user.getUsertype()) {
+                    case "Administrator" -> {
+                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Administrator");
+                        Administrator adminPage = new Administrator();
+                        adminPage.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    case "Sales Manager" -> {
+                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Sales Manager");
+                        Sales_Manager salesPage = new Sales_Manager();
+                        salesPage.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    case "Purchase Manager" -> {
+                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Purchase Manager");
+                        Purchase_Manager purchasePage = new Purchase_Manager();
+                        purchasePage.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    case "Inventory Manager" -> {
+                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Inventory Manager");
+                        Inventory_Manager inventoryPage = new Inventory_Manager();
+                        inventoryPage.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    case "Finance Manager" -> {
+                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Finance Manager");
+                        Finance_Manager financePage = new Finance_Manager();
+                        financePage.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    default -> JOptionPane.showMessageDialog(rootPane, "Wrong User typr, Username or Password!");
                 }
                 
     } else {
