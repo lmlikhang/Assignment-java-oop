@@ -52,15 +52,12 @@ public class User {
         try (BufferedReader br = new BufferedReader(new FileReader("users.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] userdata = line.split(",");  // Split the line by commas
-                String fileUsername = userdata[0];  // Get username from the file
-                String filePassword = userdata[1];  // Get password from the file
-                String role = userdata[2];  // Get role from the file
+                String[] userdata = line.split(",");
+                String fileUsername = userdata[0];
+                String filePassword = userdata[1];
+                String role = userdata[2];
 
-                // Check if the entered username and password match any record
                 if (fileUsername.equals(username) && filePassword.equals(password)) {
-                    
-                    // If valid, return a new User object with the details
                     
                     return new User(fileUsername, filePassword, role);
                 }
@@ -68,7 +65,7 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;  // Return null if no matching user is found
+        return null;
     }
     
     

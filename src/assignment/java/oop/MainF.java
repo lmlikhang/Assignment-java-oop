@@ -157,53 +157,47 @@ public class MainF extends javax.swing.JFrame {
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
         String username = usernametxt.getText();
         String password = new String(passwordtxt.getPassword());
-        User valid = new User("","","");
+        String selectedRole = (String) userBox.getSelectedItem();
         
+        User valid = new User("","","");
         User user = valid.validateUser(username, password);
+        
         if (user != null) {
-            switch (user.getUsertype()) {
-                case "Administrator" ->                     {
-                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Administrator");
-                        Administrator adminPage = new Administrator();
-                        adminPage.setVisible(true);
-                        this.setVisible(false);
-                    }
-                case "Sales Manager" -> {
-                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Sales Manager");
-                        Sales_Manager salesPage = new Sales_Manager();
-                        salesPage.setVisible(true);
-                        this.setVisible(false);
+            if (user.getUsertype().equals(selectedRole)){
+                    if (user.getUsertype().equals("Administrator")) {         
+                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Administrator");
+                    Administrator adminPage = new Administrator();
+                    adminPage.setVisible(true);
+                    this.setVisible(false);
+                } else if (user.getUsertype().equals("Sales Manager")) {
+                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Sales Manager");
+                    Sales_Manager salesPage = new Sales_Manager();
+                    salesPage.setVisible(true);
+                    this.setVisible(false);
+                } else if (user.getUsertype().equals("Purchase Manager")) {
+                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Purchase Manager");
+                    Purchase_Manager purchasePage = new Purchase_Manager();
+                    purchasePage.setVisible(true);
+                    this.setVisible(false);
+                } else if (user.getUsertype().equals("Inventory Manager")) {
+                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Inventory Manager");
+                    Inventory_Manager inventoryPage = new Inventory_Manager();
+                    inventoryPage.setVisible(true);
+                    this.setVisible(false);
+                } else if (user.getUsertype().equals("Finance Manager")) {
+                    JOptionPane.showMessageDialog(rootPane, "Welcome back, Finance Manager");
+                    Finance_Manager financePage = new Finance_Manager();
+                    financePage.setVisible(true);
+                    this.setVisible(false);
+            } else {
+                    JOptionPane.showMessageDialog(rootPane, "Wrong User typr, Username or Password!");
                 }
-                case "Purchase Manager" ->                     {
-                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Purchase Manager");
-                        Purchase_Manager PurchasePage = new Purchase_Manager();
-                        PurchasePage.setVisible(true);
-                        this.setVisible(false);
-                    }
-                case "Inventory Manager" ->                     {
-                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Inventory Manager");
-                        Inventory_Manager InventoryPage = new Inventory_Manager();
-                        InventoryPage.setVisible(true);
-                        this.setVisible(false);
-                    }
-                case "Finance Manager" ->                     {
-                        JOptionPane.showMessageDialog(rootPane, "Welcome back, Finance Manager");
-                        Finance_Manager FinancePage = new Finance_Manager();
-                        FinancePage.setVisible(true);
-                        this.setVisible(false);
-                    }
-                default -> {
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password!!!");
-        }
-            
-    
-    
-    
+                
+    } else {
+            JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password!");
+    }
     }//GEN-LAST:event_loginbuttonActionPerformed
-
+    }
     private void userBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userBoxActionPerformed
