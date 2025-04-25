@@ -9,5 +9,5 @@ package assignment.java.oop;
  * @author alvin
  */
 public class Items {
-    private 
+    
 }
