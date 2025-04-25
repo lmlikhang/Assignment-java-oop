@@ -45,6 +45,8 @@ public class Sales_Manager extends javax.swing.JFrame {
         Panels = new javax.swing.JPanel();
         ListOfItem_Panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         ListOfSuppliers_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         DisplayRequisition_panel = new javax.swing.JPanel();
@@ -177,21 +179,38 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("List of items");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Item name", "Price", "quantity"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout ListOfItem_PanelLayout = new javax.swing.GroupLayout(ListOfItem_Panel);
         ListOfItem_Panel.setLayout(ListOfItem_PanelLayout);
         ListOfItem_PanelLayout.setHorizontalGroup(
             ListOfItem_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListOfItem_PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addGroup(ListOfItem_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         ListOfItem_PanelLayout.setVerticalGroup(
             ListOfItem_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListOfItem_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         Panels.add(ListOfItem_Panel, "card2");
@@ -393,6 +412,8 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.Menu menu3;
