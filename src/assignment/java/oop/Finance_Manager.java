@@ -8,14 +8,27 @@ package assignment.java.oop;
  *
  * @author alvin
  */
+import assignment.java.oop.panelsFM.ApprovePO_Panel;
+import javax.swing.JPanel;
+import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import javax.swing.BorderFactory;
+import java.awt.Color;
+
+
+
+
 public class Finance_Manager extends javax.swing.JFrame {
 
     /**
      * Creates new form Finance_Manager
      */
     public Finance_Manager() {
-        initComponents();
-    }
+    initComponents();
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,9 +39,7 @@ public class Finance_Manager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        mainContentPanel = new javax.swing.JPanel();
         BtnApprovePO = new javax.swing.JButton();
         BtnModifyPO = new javax.swing.JButton();
         BtnViewInventory = new javax.swing.JButton();
@@ -37,27 +48,18 @@ public class Finance_Manager extends javax.swing.JFrame {
         BtnViewPRs_POs = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Btnlgout = new javax.swing.JButton();
+        mainContentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Finance");
-
         jPanel1.setBackground(new java.awt.Color(204, 153, 255));
 
-        mainContentPanel.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout mainContentPanelLayout = new javax.swing.GroupLayout(mainContentPanel);
-        mainContentPanel.setLayout(mainContentPanelLayout);
-        mainContentPanelLayout.setHorizontalGroup(
-            mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        mainContentPanelLayout.setVerticalGroup(
-            mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         BtnApprovePO.setText("Approve PO");
+        BtnApprovePO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnApprovePOActionPerformed(evt);
+            }
+        });
 
         BtnModifyPO.setText("Modify PO (quantity/supplier)");
 
@@ -75,75 +77,111 @@ public class Finance_Manager extends javax.swing.JFrame {
 
         Btnlgout.setText("Log Out");
 
+        mainContentPanel.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout mainContentPanelLayout = new javax.swing.GroupLayout(mainContentPanel);
+        mainContentPanel.setLayout(mainContentPanelLayout);
+        mainContentPanelLayout.setHorizontalGroup(
+            mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+        );
+        mainContentPanelLayout.setVerticalGroup(
+            mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(BtnModifyPO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnApprovePO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnViewInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnProcessPayments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnGenerateFinancialReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnViewPRs_POs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btnlgout)
-                        .addGap(77, 77, 77)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnModifyPO)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(BtnApprovePO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnViewInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnProcessPayments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnGenerateFinancialReports, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                .addComponent(BtnViewPRs_POs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(Btnlgout)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(mainContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addComponent(jLabel2)
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(BtnApprovePO)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addComponent(BtnModifyPO)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addComponent(BtnViewInventory)
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
                 .addComponent(BtnProcessPayments)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(BtnGenerateFinancialReports)
-                .addGap(27, 27, 27)
+                .addGap(52, 52, 52)
                 .addComponent(BtnViewPRs_POs)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addComponent(Btnlgout)
-                .addGap(34, 34, 34))
+                .addGap(21, 21, 21))
+            .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+ 
+    private void BtnApprovePOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApprovePOActionPerformed
+        loadPanel(new ApprovePO_Panel());
+
+    }//GEN-LAST:event_BtnApprovePOActionPerformed
+
+    private void loadPanel(JPanel panel) {
+    mainContentPanel.removeAll();
+    mainContentPanel.setLayout(new GridBagLayout());
+
+    JPanel wrapper = new JPanel();
+    wrapper.setLayout(new BorderLayout());
+    wrapper.setPreferredSize(new Dimension(500,350)); // adjust size
+    wrapper.add(panel, BorderLayout.CENTER);
+    wrapper.setOpaque(false); // Make wrapper transparent if needed
+    wrapper.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
+
+
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.CENTER; // Center it
+    gbc.insets = new java.awt.Insets(50, 50, 50, 50); // add margins top, left, bottom, right
+
+    mainContentPanel.add(wrapper, gbc);
+
+    mainContentPanel.revalidate();
+    mainContentPanel.repaint();
+}
+
+
 
     /**
      * @param args the command line arguments
@@ -158,7 +196,6 @@ public class Finance_Manager extends javax.swing.JFrame {
     private javax.swing.JButton BtnViewInventory;
     private javax.swing.JButton BtnViewPRs_POs;
     private javax.swing.JButton Btnlgout;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainContentPanel;
