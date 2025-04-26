@@ -16,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 
 
 
@@ -23,6 +26,7 @@ import java.io.IOException;
 public class ApprovePO_Panel extends javax.swing.JPanel {
     private JTable poTable;
     private DefaultTableModel model;
+    
 
     /**
      * Creates new form ApprovePO_Panel
@@ -30,10 +34,57 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     public ApprovePO_Panel() {
         initComponents();
         String[] columnNames = {"PO ID", "Supplier", "Item Name", "Quantity", "Status"};
-        model = new DefaultTableModel(columnNames, 0); // Create empty table model
-        poTable = new JTable(model); // Assign model to table
+        model = (DefaultTableModel) jTable1.getModel();
+        loadPurchaseOrdersFromFile(); // load file data
+        model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        loadPurchaseOrdersFromFile();
+
+        
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(new StatusColorRenderer());
+
 
     }
+    
+    private static class StatusColorRenderer extends javax.swing.table.DefaultTableCellRenderer {
+    @Override
+    public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+        
+        java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+        // Color based on Status value
+        if ("Approved".equals(value)) {
+            c.setForeground(new java.awt.Color(0, 153, 0)); 
+        } else if ("Declined".equals(value)) {
+            c.setForeground(java.awt.Color.RED); 
+        } else {
+            c.setForeground(java.awt.Color.BLACK); 
+        }
+        
+        return c;
+    }
+}
+    private void saveTableToFile() {
+    String filePath = "src/assignment/java/oop/FM data/purchase_orders.txt"; 
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        for (int i = 0; i < model.getRowCount(); i++) {
+            StringBuilder row = new StringBuilder();
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                row.append(model.getValueAt(i, j));
+                if (j < model.getColumnCount() - 1) {
+                    row.append(",");
+                }
+            }
+            writer.write(row.toString());
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error saving file:\n" + e.getMessage());
+    }
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +136,11 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         });
 
         BtnDecline.setText("Decline");
+        BtnDecline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeclineActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,14 +177,25 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApproveActionPerformed
-        int selectedRow = poTable.getSelectedRow();
+        int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
             model.setValueAt("Approved", selectedRow, 4);
+            saveTableToFile();
         } else {
-           JOptionPane.showMessageDialog(this, "Please select a row first!");
+           JOptionPane.showMessageDialog(this, "Please sele a row first!");
         }
 
     }//GEN-LAST:event_BtnApproveActionPerformed
+
+    private void BtnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeclineActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            model.setValueAt("Declined", selectedRow, 4);
+            saveTableToFile();
+        } else {
+        JOptionPane.showMessageDialog(this, "Please select a row first!");
+        }
+    }//GEN-LAST:event_BtnDeclineActionPerformed
     
     private void loadPurchaseOrdersFromFile() {
     String filePath = "src/assignment/java/oop/FM data/purchase_orders.txt";
@@ -136,7 +203,7 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         String line;
         while ((line = reader.readLine()) != null) {
             String[] rowData = line.split(",");
-            if (rowData.length == 5) { // Make sure it has 5 fields
+            if (rowData.length == 5) { 
                 model.addRow(rowData);
             }
         }
