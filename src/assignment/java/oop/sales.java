@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author alvin
  */
-public class Items {
+public class sales {
     
     public void loadItemsToTable(javax.swing.JTable itemsTable) {
         String filePath = "item.txt"; 
@@ -41,6 +41,9 @@ public class Items {
         // Set the table model to update the JTable
         itemsTable.setModel(model);
     }
+    
+    
+    
 
     
 
