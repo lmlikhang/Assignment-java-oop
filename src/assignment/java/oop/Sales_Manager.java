@@ -349,7 +349,7 @@ public class Sales_Manager extends javax.swing.JFrame {
         Panels.add(ListOfItem_Panel);
         Panels.revalidate();
         Panels.repaint();
-        Items items = new Items();
+        sales items = new sales();
         items.loadItemsToTable(ItemsTable);
     }//GEN-LAST:event_SDM_btnActionPerformed
 
