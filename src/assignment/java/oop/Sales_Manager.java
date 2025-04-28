@@ -46,7 +46,7 @@ public class Sales_Manager extends javax.swing.JFrame {
         ListOfItem_Panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ItemsTable = new javax.swing.JTable();
         ListOfSuppliers_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         DisplayRequisition_panel = new javax.swing.JPanel();
@@ -179,7 +179,7 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("List of items");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ItemsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -190,7 +190,7 @@ public class Sales_Manager extends javax.swing.JFrame {
                 "ID", "Item name", "Price", "quantity"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ItemsTable);
 
         javax.swing.GroupLayout ListOfItem_PanelLayout = new javax.swing.GroupLayout(ListOfItem_Panel);
         ListOfItem_Panel.setLayout(ListOfItem_PanelLayout);
@@ -349,6 +349,8 @@ public class Sales_Manager extends javax.swing.JFrame {
         Panels.add(ListOfItem_Panel);
         Panels.revalidate();
         Panels.repaint();
+        Items items = new Items();
+        items.loadItemsToTable(ItemsTable);
     }//GEN-LAST:event_SDM_btnActionPerformed
 
     private void PR_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PR_btnActionPerformed
@@ -394,6 +396,7 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel DisplayRequisition_panel;
     private javax.swing.JPanel GeneratePurchaseOrder_panel;
     private javax.swing.JButton ItemManagemant_btn;
+    private javax.swing.JTable ItemsTable;
     private javax.swing.JPanel ListOfItem_Panel;
     private javax.swing.JPanel ListOfSuppliers_panel;
     private javax.swing.JButton Logout_btn;
@@ -413,7 +416,6 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.Menu menu3;
