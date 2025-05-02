@@ -21,7 +21,7 @@ public class sales {
     private String Price;
     private int Quantity;
     
-    public void sales(String ID,String ItemName,String Price,int Quantity){
+    public sales(String ID, String ItemName, String Price, int Quantity){
         this.ID = ID;
         this.ItemName = ItemName;
         this.Price = Price;
@@ -61,6 +61,10 @@ public class sales {
     }
     
     
+    
+    public sales(){
+    
+    }
     
     public void loadItemsToTable(javax.swing.JTable itemsTable) {
         String filePath = "item.txt"; 
@@ -121,19 +125,14 @@ public class sales {
     
     public void AddItem(javax.swing.JTable items) {
         String filePath = "item.txt";
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
-            for (int i=0; i<items.getRowCount(); i++){
-                String ID =(String) items.getValueAt(i, 0);
-                String ItemName = (String) items.getValueAt(i, 1);
-                String Price =(String) items.getValueAt(i, 2);
-                int Quantity =(int) items.getValueAt(i, 3);
-                writer.write(ID + "," + ItemName + "," + Price + "," + Quantity);
-                writer.newLine();
-            }
-        }catch(IOException e){
-            e.printStackTrace();  // Print error details for debugging
-            JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
-        }
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+        writer.write(ID + "," + ItemName + "," +"$"+ Price + "," + Quantity);
+        writer.newLine();
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
+    }
     }
     
     public void UpdateItem(javax.swing.JTable supplierinfo) {

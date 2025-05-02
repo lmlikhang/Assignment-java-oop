@@ -524,13 +524,21 @@ public class Sales_Manager extends javax.swing.JFrame {
             Quantity = Integer.parseInt(txtQuantity.getText());
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this,"Please,Enter a valid number.") ;
+            return;
         }
         if(ID.equals("")||ItemName.equals("")||Price.equals("")){
             JOptionPane.showMessageDialog(this,"Please,Enter all details.") ;
         }else{
-            sales AddItems = new sales();
+            sales AddItems = new sales(ID, ItemName, Price, Quantity);
             AddItems.AddItem(ItemsTable);
+            txtID.setText("");
+            txtItemName.setText("");
+            txtPrice.setText("");
+            txtQuantity.setText("");
+            sales items = new sales();
+            items.loadItemsToTable(ItemsTable);
         }
+
     }//GEN-LAST:event_Save_btnActionPerformed
 
     /**

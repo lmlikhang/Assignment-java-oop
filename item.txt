@@ -1,4 +1,4 @@
-101,Item 1, $100,20
-102,Item 2, $5,40
-103,Item 3, $10,30
-104,Item 4, $30,70
+I001,Wireless Mouse,$45.90,20
+I002,Mechanical Keyboard,$120.00,15
+I003,USB-C Cable,$12.50,50
+I004,27-inch Monitor,$699.00,5
