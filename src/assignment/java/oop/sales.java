@@ -97,13 +97,26 @@ public class sales {
     public void AddItem(javax.swing.JTable items) {
         String filePath = "item.txt";
         String generatedID = generateNextID(filePath);
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-        writer.write(generatedID + "," + ItemName + "," +"$"+ Price + "," + Quantity);
-        writer.newLine();
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
-    }
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while ((line = reader.readLine()) != null){
+            
+                if (line.contains("," + ItemName + ",")){
+                    JOptionPane.showMessageDialog(null, "Dublicate item name are not allow! ");
+                    return;
+                }
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write("I"+generatedID+ ItemName + "," +"$"+ Price + "," + Quantity);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
+        }
     }
     public String generateNextID(String filePath) {
         String lastLine = "";
@@ -126,9 +139,10 @@ public class sales {
                 }
             }
         }
-        return "101";
+        return "Error";
         
     }
+    
     
     public void RemoveItem(String idToRemove) {
         String filePath = "item.txt";
@@ -166,7 +180,7 @@ public class sales {
         String filePath = "suppliers.txt";
         String generatedID = generateNextID(filePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            writer.write(generatedID + "," + SupplierName + "," + Email + "," + Product);
+            writer.write("I"+generatedID + "," + SupplierName + "," + Email + "," + Product);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
