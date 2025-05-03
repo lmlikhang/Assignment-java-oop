@@ -33,64 +33,6 @@ public class sales {
         this.Product = Product;
     }
     
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getItemName() {
-        return ItemName;
-    }
-
-    public void setItemName(String ItemName) {
-        this.ItemName = ItemName;
-    }
-
-    public String getPrice() {
-        return Price;
-    }
-
-    public void setPrice(String Price) {
-        this.Price = Price;
-    }
-
-    public int getQuantity() {
-        return Quantity;
-    }
-
-    public void setQuantity(int Quantity) {
-        this.Quantity = Quantity;
-    }
-
-    public String getSupplierName() {
-        return SupplierName;
-    }
-
-    public void setSupplierName(String SupplierName) {
-        this.SupplierName = SupplierName;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-
-    public String getProduct() {
-        return Product;
-    }
-
-    public void setProduct(String Product) {
-        this.Product = Product;
-    }
-    
-    
-    
     public sales(){
     
     }
@@ -178,13 +120,13 @@ public class sales {
             if (parts.length > 0){
                 try {
                     int lastID = Integer.parseInt(parts[0]);
-                    return String.format("%03d",lastID + 1);
+                    return String.format("%04d",lastID + 1);
                 }catch (NumberFormatException e){
                     
                 }
             }
         }
-        return "1001";
+        return "101";
         
     }
     
@@ -220,15 +162,46 @@ public class sales {
     }
     }
     
-    public void AddSuppliers(){
+    public void AddSuppliers(javax.swing.JTable items){
         String filePath = "suppliers.txt";
         String generatedID = generateNextID(filePath);
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-        writer.write(generatedID + "," + SupplierName + "," +"$"+ Email + "," + Product);
-        writer.newLine();
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(generatedID + "," + SupplierName + "," + Email + "," + Product);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
+        }
+    }
+    public void RemoveSupplier(String idToRemove) {
+        String filePath = "suppliers.txt";
+        File inputFile = new File(filePath);
+        File tempFile = new File("temp.txt");
+
+        try (
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+        ) {
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] data = currentLine.split(",");
+                if (data.length > 0 && data[0].equals(idToRemove)) {
+                    continue; // skip this line (deletes it)
+                }
+                writer.write(currentLine);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error removing item: " + e.getMessage());
+            return;
+        }
+
+        // Replace old file with updated file
+        if (inputFile.delete()) {
+            tempFile.renameTo(inputFile);
+        } else {
+        JOptionPane.showMessageDialog(null, "Could not replace the file.");
     }
     }
 

@@ -1,5 +1,4 @@
-002,Mechanical Keyboard,$120,15
-003,USB-C Cable,$12,50
-004,27-inch Monitor,$699,5
-006,Microphone,$50,30
-007,mouse,$200,40
+0002,Mechanical Keyboard,$120,15
+0003,USB-C Cable,$12,50
+0004,27-inch Monitor,$699,5
+0006,Microphone,$50,30

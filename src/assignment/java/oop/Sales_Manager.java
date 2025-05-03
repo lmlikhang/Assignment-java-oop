@@ -335,7 +335,7 @@ public class Sales_Manager extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Item name", "Price", "quantity"
+                "ID", "Supplier name", "Email", "Product"
             }
         ));
         jScrollPane2.setViewportView(suppliertable);
@@ -628,19 +628,28 @@ public class Sales_Manager extends javax.swing.JFrame {
         if(SupplierName.equals("")||Email.equals("")||Product.equals("")){
             JOptionPane.showMessageDialog(this,"Please,Enter all details.") ;
         }else{
-            sales AddSuppliers = new sales(ID, SupplierName, Email, Product);
-            AddSuppliers.AddItem(suppliertable);
+            sales AddSupplier = new sales(ID, SupplierName, Email, Product);
+            AddSupplier.AddSuppliers(suppliertable);
 
             txtSupplierName.setText("");
             txtEmail.setText("");
             txtProduct.setText("");
             sales suppliers = new sales();
-            suppliers.loadItemsToTable(suppliertable);
+            suppliers.loadTSupplieroTable(suppliertable);
         }
     }//GEN-LAST:event_Suppliers_Save_btnActionPerformed
 
     private void Suppliers_Remove_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Suppliers_Remove_btn1ActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = suppliertable.getSelectedRow();
+            if (selectedRow != -1) {
+                String selectedID = suppliertable.getValueAt(selectedRow, 0).toString();
+                sales s = new sales();
+                s.RemoveSupplier(selectedID); // delete from file
+                s.loadTSupplieroTable(suppliertable); // refresh table
+                JOptionPane.showMessageDialog(this, "Item deleted.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an item to remove.");
+            }
     }//GEN-LAST:event_Suppliers_Remove_btn1ActionPerformed
 
 
