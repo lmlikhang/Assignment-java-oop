@@ -2,6 +2,7 @@
 package assignment.java.oop;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -157,8 +158,36 @@ public class sales {
         
     }
     
-    public void RemoveItem(javax.swing.JTable supplierinfo) {
-        
+    public void RemoveItem(String idToRemove) {
+        String filePath = "item.txt";
+        File inputFile = new File(filePath);
+        File tempFile = new File("temp.txt");
+
+        try (
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+        ) {
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] data = currentLine.split(",");
+                if (data.length > 0 && data[0].equals(idToRemove)) {
+                    continue; // skip this line (deletes it)
+                }
+                writer.write(currentLine);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error removing item: " + e.getMessage());
+            return;
+        }
+
+        // Replace old file with updated file
+        if (inputFile.delete()) {
+            tempFile.renameTo(inputFile);
+        } else {
+        JOptionPane.showMessageDialog(null, "Could not replace the file.");
+    }
     }
 
 }
