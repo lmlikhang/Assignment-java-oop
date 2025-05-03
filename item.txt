@@ -1,4 +1,6 @@
-I001,Wireless Mouse,$45.90,20
-I002,Mechanical Keyboard,$120.00,15
-I003,USB-C Cable,$12.50,50
-I004,27-inch Monitor,$699.00,5
+001,Wireless Mouse,$45,20
+002,Mechanical Keyboard,$120,15
+003,USB-C Cable,$12,50
+004,27-inch Monitor,$699,5
+005,Nothing Phone,$1200,40
+006,Microphone,$50,30

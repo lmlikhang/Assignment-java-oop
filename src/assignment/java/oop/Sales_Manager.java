@@ -51,12 +51,10 @@ public class Sales_Manager extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ItemsTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        txtID = new javax.swing.JTextField();
         txtItemName = new javax.swing.JTextField();
         txtPrice = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
         Save_btn = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -232,8 +230,6 @@ public class Sales_Manager extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("ID :");
-
         jLabel13.setText("Item name :");
 
         jLabel14.setText("Price :");
@@ -243,6 +239,11 @@ public class Sales_Manager extends javax.swing.JFrame {
         Update_btn.setText("Update");
 
         Remove_btn.setText("Remove");
+        Remove_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Remove_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -259,7 +260,6 @@ public class Sales_Manager extends javax.swing.JFrame {
                         .addComponent(Remove_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15))
@@ -267,18 +267,13 @@ public class Sales_Manager extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtItemName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
@@ -319,7 +314,7 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         Panels.add(ListOfItem_Panel, "card2");
@@ -516,7 +511,8 @@ public class Sales_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_Logout_btnActionPerformed
 
     private void Save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_btnActionPerformed
-        String ID = txtID.getText();
+        
+        String ID = "";
         String ItemName = txtItemName.getText();
         String Price = txtPrice.getText();
         int Quantity = 0;
@@ -526,12 +522,12 @@ public class Sales_Manager extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please,Enter a valid number.") ;
             return;
         }
-        if(ID.equals("")||ItemName.equals("")||Price.equals("")){
+        if(ItemName.equals("")||Price.equals("")){
             JOptionPane.showMessageDialog(this,"Please,Enter all details.") ;
         }else{
             sales AddItems = new sales(ID, ItemName, Price, Quantity);
             AddItems.AddItem(ItemsTable);
-            txtID.setText("");
+
             txtItemName.setText("");
             txtPrice.setText("");
             txtQuantity.setText("");
@@ -541,9 +537,11 @@ public class Sales_Manager extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Save_btnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void Remove_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Remove_btnActionPerformed
+        
+    }//GEN-LAST:event_Remove_btnActionPerformed
+
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -565,7 +563,6 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JButton Update_btn;
     private javax.swing.JPanel empty;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -587,7 +584,6 @@ public class Sales_Manager extends javax.swing.JFrame {
     private java.awt.MenuBar menuBar1;
     private java.awt.MenuBar menuBar2;
     private javax.swing.JTable suppliertable;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtQuantity;
