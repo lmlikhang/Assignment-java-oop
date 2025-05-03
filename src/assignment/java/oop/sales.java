@@ -15,6 +15,9 @@ public class sales {
     private String ItemName;
     private String Price;
     private int Quantity;
+    private String SupplierName;
+    private String Email;
+    private String Product;  
     
     public sales(String ID, String ItemName, String Price, int Quantity){
         this.ID = ID;
@@ -22,7 +25,14 @@ public class sales {
         this.Price = Price;
         this.Quantity = Quantity;
     }
-
+    
+    public sales(String ID, String SupplierName, String Email, String Product){
+        this.ID = ID;
+        this.SupplierName = SupplierName;
+        this.Email = Email;
+        this.Product = Product;
+    }
+    
     public String getID() {
         return ID;
     }
@@ -53,6 +63,30 @@ public class sales {
 
     public void setQuantity(int Quantity) {
         this.Quantity = Quantity;
+    }
+
+    public String getSupplierName() {
+        return SupplierName;
+    }
+
+    public void setSupplierName(String SupplierName) {
+        this.SupplierName = SupplierName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getProduct() {
+        return Product;
+    }
+
+    public void setProduct(String Product) {
+        this.Product = Product;
     }
     
     
@@ -150,11 +184,7 @@ public class sales {
                 }
             }
         }
-        return "001";
-        
-    }
-
-    public void UpdateItem(javax.swing.JTable supplierinfo) {
+        return "1001";
         
     }
     
@@ -187,6 +217,18 @@ public class sales {
             tempFile.renameTo(inputFile);
         } else {
         JOptionPane.showMessageDialog(null, "Could not replace the file.");
+    }
+    }
+    
+    public void AddSuppliers(){
+        String filePath = "suppliers.txt";
+        String generatedID = generateNextID(filePath);
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+        writer.write(generatedID + "," + SupplierName + "," +"$"+ Email + "," + Product);
+        writer.newLine();
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "An error occurred while saving items: " + e.getMessage());
     }
     }
 

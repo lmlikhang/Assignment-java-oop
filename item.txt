@@ -1,6 +1,5 @@
-001,Wireless Mouse,$45,20
 002,Mechanical Keyboard,$120,15
 003,USB-C Cable,$12,50
 004,27-inch Monitor,$699,5
-005,Nothing Phone,$1200,40
 006,Microphone,$50,30
+007,mouse,$200,40

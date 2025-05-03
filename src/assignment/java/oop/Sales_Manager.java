@@ -58,12 +58,20 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        Update_btn = new javax.swing.JButton();
         Remove_btn = new javax.swing.JButton();
         ListOfSuppliers_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         suppliertable = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        txtSupplierName = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtProduct = new javax.swing.JTextField();
+        Suppliers_Save_btn = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        Suppliers_Remove_btn1 = new javax.swing.JButton();
         DisplayRequisition_panel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         GeneratePurchaseOrder_panel = new javax.swing.JPanel();
@@ -236,8 +244,6 @@ public class Sales_Manager extends javax.swing.JFrame {
 
         jLabel15.setText("Quantity :");
 
-        Update_btn.setText("Update");
-
         Remove_btn.setText("Remove");
         Remove_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,44 +257,40 @@ public class Sales_Manager extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(Save_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Update_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Remove_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15))
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtItemName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Save_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Remove_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Save_btn)
-                    .addComponent(Update_btn)
                     .addComponent(Remove_btn))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -338,15 +340,80 @@ public class Sales_Manager extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(suppliertable);
 
+        Suppliers_Save_btn.setText("Save");
+        Suppliers_Save_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Suppliers_Save_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Supplier name :");
+
+        jLabel17.setText("Email :");
+
+        jLabel18.setText("Product :");
+
+        Suppliers_Remove_btn1.setText("Remove");
+        Suppliers_Remove_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Suppliers_Remove_btn1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSupplierName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtProduct, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Suppliers_Save_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Suppliers_Remove_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Suppliers_Save_btn)
+                    .addComponent(Suppliers_Remove_btn1))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ListOfSuppliers_panelLayout = new javax.swing.GroupLayout(ListOfSuppliers_panel);
         ListOfSuppliers_panel.setLayout(ListOfSuppliers_panelLayout);
         ListOfSuppliers_panelLayout.setHorizontalGroup(
             ListOfSuppliers_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListOfSuppliers_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ListOfSuppliers_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ListOfSuppliers_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         ListOfSuppliers_panelLayout.setVerticalGroup(
@@ -356,7 +423,9 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         Panels.add(ListOfSuppliers_panel, "card3");
@@ -538,8 +607,41 @@ public class Sales_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_Save_btnActionPerformed
 
     private void Remove_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Remove_btnActionPerformed
-        
+        int selectedRow = ItemsTable.getSelectedRow();
+            if (selectedRow != -1) {
+                String selectedID = ItemsTable.getValueAt(selectedRow, 0).toString();
+                sales s = new sales();
+                s.RemoveItem(selectedID); // delete from file
+                s.loadItemsToTable(ItemsTable); // refresh table
+                JOptionPane.showMessageDialog(this, "Item deleted.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an item to remove.");
+            }
     }//GEN-LAST:event_Remove_btnActionPerformed
+
+    private void Suppliers_Save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Suppliers_Save_btnActionPerformed
+        String ID = "";
+        String SupplierName = txtSupplierName.getText();
+        String Email = txtEmail.getText();
+        String Product = txtProduct.getText();
+        
+        if(SupplierName.equals("")||Email.equals("")||Product.equals("")){
+            JOptionPane.showMessageDialog(this,"Please,Enter all details.") ;
+        }else{
+            sales AddSuppliers = new sales(ID, SupplierName, Email, Product);
+            AddSuppliers.AddItem(suppliertable);
+
+            txtSupplierName.setText("");
+            txtEmail.setText("");
+            txtProduct.setText("");
+            sales suppliers = new sales();
+            suppliers.loadItemsToTable(suppliertable);
+        }
+    }//GEN-LAST:event_Suppliers_Save_btnActionPerformed
+
+    private void Suppliers_Remove_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Suppliers_Remove_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Suppliers_Remove_btn1ActionPerformed
 
 
     
@@ -560,12 +662,16 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JButton Save_btn;
     private javax.swing.JButton SupplierManagement_btn;
     private javax.swing.JPanel SupplierManagement_panel;
-    private javax.swing.JButton Update_btn;
+    private javax.swing.JButton Suppliers_Remove_btn1;
+    private javax.swing.JButton Suppliers_Save_btn;
     private javax.swing.JPanel empty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -575,6 +681,7 @@ public class Sales_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Menu menu1;
@@ -584,8 +691,11 @@ public class Sales_Manager extends javax.swing.JFrame {
     private java.awt.MenuBar menuBar1;
     private java.awt.MenuBar menuBar2;
     private javax.swing.JTable suppliertable;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtProduct;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtSupplierName;
     // End of variables declaration//GEN-END:variables
 }
