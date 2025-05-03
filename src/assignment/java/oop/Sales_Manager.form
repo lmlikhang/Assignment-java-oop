@@ -120,8 +120,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="SDM_btn" max="32767" attributes="0"/>
-                          <Component id="PR_btn" max="32767" attributes="0"/>
+                          <Component id="ItemEntry_btn" max="32767" attributes="0"/>
+                          <Component id="SupplierEntry_btn" max="32767" attributes="0"/>
                           <Component id="PRV_btn" max="32767" attributes="0"/>
                           <Component id="ItemManagemant_btn" max="32767" attributes="0"/>
                           <Component id="SupplierManagement_btn" max="32767" attributes="0"/>
@@ -137,9 +137,9 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="SDM_btn" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="ItemEntry_btn" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="PR_btn" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="SupplierEntry_btn" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="PRV_btn" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -154,12 +154,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="SDM_btn">
+            <Component class="javax.swing.JButton" name="ItemEntry_btn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="List of items"/>
+                <Property name="text" type="java.lang.String" value="Item Entry"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SDM_btnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemEntry_btnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -173,12 +173,12 @@
                 <Property name="text" type="java.lang.String" value="Sales manager"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="PR_btn">
+            <Component class="javax.swing.JButton" name="SupplierEntry_btn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="List of Suppliers"/>
+                <Property name="text" type="java.lang.String" value="Supplier Entry"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PR_btnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SupplierEntry_btnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="PRV_btn">
@@ -557,10 +557,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="Suppliers_Save_btn" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="Edit_btn" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="Suppliers_Remove_btn1" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -573,11 +580,8 @@
                                           <Component id="txtProduct" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="Suppliers_Save_btn" alignment="1" min="-2" pref="240" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Suppliers_Remove_btn1" min="-2" pref="240" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -603,6 +607,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="Suppliers_Save_btn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="Suppliers_Remove_btn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Edit_btn" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="33" max="32767" attributes="0"/>
                           </Group>
@@ -645,6 +650,14 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Suppliers_Remove_btn1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="Edit_btn">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Edit_btnActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

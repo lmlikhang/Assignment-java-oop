@@ -37,9 +37,9 @@ public class Sales_Manager extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        SDM_btn = new javax.swing.JButton();
+        ItemEntry_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        PR_btn = new javax.swing.JButton();
+        SupplierEntry_btn = new javax.swing.JButton();
         PRV_btn = new javax.swing.JButton();
         ItemManagemant_btn = new javax.swing.JButton();
         SupplierManagement_btn = new javax.swing.JButton();
@@ -72,6 +72,7 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         Suppliers_Remove_btn1 = new javax.swing.JButton();
+        Edit_btn = new javax.swing.JButton();
         DisplayRequisition_panel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         GeneratePurchaseOrder_panel = new javax.swing.JPanel();
@@ -108,10 +109,10 @@ public class Sales_Manager extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
-        SDM_btn.setText("List of items");
-        SDM_btn.addActionListener(new java.awt.event.ActionListener() {
+        ItemEntry_btn.setText("Item Entry");
+        ItemEntry_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDM_btnActionPerformed(evt);
+                ItemEntry_btnActionPerformed(evt);
             }
         });
 
@@ -119,10 +120,10 @@ public class Sales_Manager extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sales manager");
 
-        PR_btn.setText("List of Suppliers");
-        PR_btn.addActionListener(new java.awt.event.ActionListener() {
+        SupplierEntry_btn.setText("Supplier Entry");
+        SupplierEntry_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PR_btnActionPerformed(evt);
+                SupplierEntry_btnActionPerformed(evt);
             }
         });
 
@@ -164,8 +165,8 @@ public class Sales_Manager extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SDM_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PR_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ItemEntry_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SupplierEntry_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PRV_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ItemManagemant_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SupplierManagement_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,9 +179,9 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SDM_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ItemEntry_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PR_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SupplierEntry_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PRV_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -360,13 +361,26 @@ public class Sales_Manager extends javax.swing.JFrame {
             }
         });
 
+        Edit_btn.setText("Edit");
+        Edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Edit_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(Suppliers_Save_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Suppliers_Remove_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -376,11 +390,8 @@ public class Sales_Manager extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSupplierName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProduct, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Suppliers_Save_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Suppliers_Remove_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtProduct, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(59, 59, 59))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +411,8 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Suppliers_Save_btn)
-                    .addComponent(Suppliers_Remove_btn1))
+                    .addComponent(Suppliers_Remove_btn1)
+                    .addComponent(Edit_btn))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -534,23 +546,23 @@ public class Sales_Manager extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SDM_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDM_btnActionPerformed
+    private void ItemEntry_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEntry_btnActionPerformed
         Panels.removeAll();
         Panels.add(ListOfItem_Panel);
         Panels.revalidate();
         Panels.repaint();
         sales items = new sales();
         items.loadItemsToTable(ItemsTable);
-    }//GEN-LAST:event_SDM_btnActionPerformed
+    }//GEN-LAST:event_ItemEntry_btnActionPerformed
 
-    private void PR_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PR_btnActionPerformed
+    private void SupplierEntry_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupplierEntry_btnActionPerformed
         Panels.removeAll();
         Panels.add(ListOfSuppliers_panel);
         Panels.revalidate();
         Panels.repaint();
         sales supplier = new sales();
         supplier.loadTSupplieroTable(suppliertable);
-    }//GEN-LAST:event_PR_btnActionPerformed
+    }//GEN-LAST:event_SupplierEntry_btnActionPerformed
 
     private void PRV_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRV_btnActionPerformed
         Panels.removeAll();
@@ -652,23 +664,46 @@ public class Sales_Manager extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_Suppliers_Remove_btn1ActionPerformed
 
+    private void Edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_btnActionPerformed
+        int selectedRow = suppliertable.getSelectedRow();
+            if (selectedRow != -1) {
+                
+                String selectedID = suppliertable.getValueAt(selectedRow, 0).toString();
+                String supplierName = suppliertable.getValueAt (selectedRow, 1).toString();
+                String Email = suppliertable.getValueAt (selectedRow, 2).toString();
+                String Product = suppliertable.getValueAt (selectedRow, 3).toString();
+                
+                txtSupplierName.setText(supplierName);
+                txtEmail.setText(Email);
+                txtProduct.setText(Product);
+                sales s = new sales();
+                s.RemoveSupplier(selectedID); // delete from file
+                s.loadTSupplieroTable(suppliertable); // refresh table
+                JOptionPane.showMessageDialog(this, "Item deleted.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an item to remove.");
+            }
+            
+    }//GEN-LAST:event_Edit_btnActionPerformed
+
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DisplayRequisition_panel;
+    private javax.swing.JButton Edit_btn;
     private javax.swing.JPanel GeneratePurchaseOrder_panel;
+    private javax.swing.JButton ItemEntry_btn;
     private javax.swing.JButton ItemManagemant_btn;
     private javax.swing.JTable ItemsTable;
     private javax.swing.JPanel ListOfItem_Panel;
     private javax.swing.JPanel ListOfSuppliers_panel;
     private javax.swing.JButton Logout_btn;
     private javax.swing.JButton PRV_btn;
-    private javax.swing.JButton PR_btn;
     private javax.swing.JPanel Panels;
     private javax.swing.JButton Remove_btn;
-    private javax.swing.JButton SDM_btn;
     private javax.swing.JButton Save_btn;
+    private javax.swing.JButton SupplierEntry_btn;
     private javax.swing.JButton SupplierManagement_btn;
     private javax.swing.JPanel SupplierManagement_panel;
     private javax.swing.JButton Suppliers_Remove_btn1;
