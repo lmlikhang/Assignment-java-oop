@@ -64,6 +64,11 @@ public class Finance_Manager extends javax.swing.JFrame {
         BtnModifyPO.setText("Modify PO (quantity/supplier)");
 
         BtnViewInventory.setText("View Inventory Updates");
+        BtnViewInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnViewInventoryActionPerformed(evt);
+            }
+        });
 
         BtnProcessPayments.setText("Process Payments ");
 
@@ -109,7 +114,7 @@ public class Finance_Manager extends javax.swing.JFrame {
                             .addComponent(BtnViewPRs_POs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BtnModifyPO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(mainContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,6 +160,10 @@ public class Finance_Manager extends javax.swing.JFrame {
         loadPanel(new ApprovePO_Panel());
 
     }//GEN-LAST:event_BtnApprovePOActionPerformed
+
+    private void BtnViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewInventoryActionPerformed
+        loadPanel(new assignment.java.oop.panelsFM.InventoryUpdate_Panel());
+    }//GEN-LAST:event_BtnViewInventoryActionPerformed
 
     private void loadPanel(JPanel panel) {
     mainContentPanel.removeAll();

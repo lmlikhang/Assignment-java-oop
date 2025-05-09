@@ -62,7 +62,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Component id="mainContentPanel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -110,6 +110,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View Inventory Updates"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnViewInventoryActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnProcessPayments">
           <Properties>
