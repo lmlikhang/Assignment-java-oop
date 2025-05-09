@@ -4,6 +4,8 @@
  */
 package assignment.java.oop.panelsFM;
 
+import javax.swing.*;
+import java.io.*;
 /**
  *
  * @author user
@@ -26,19 +28,127 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtReportArea = new javax.swing.JTextArea();
+        generateButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtMonth = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        txtReportArea.setColumns(20);
+        txtReportArea.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtReportArea.setRows(5);
+        jScrollPane1.setViewportView(txtReportArea);
+
+        generateButton.setText("Generate Report");
+        generateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Financial Summary Report");
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Choose Month");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(35, 35, 35)
+                                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81)
+                                .addComponent(generateButton)))))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(generateButton))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
+        generateReport();
+    }//GEN-LAST:event_generateButtonActionPerformed
 
+    private void generateReport() {
+        String filterMonth = txtMonth.getText().trim();
+        int paidCount = 0;
+        double totalAmount = 0;
+        StringBuilder report = new StringBuilder("=== Financial Report ===\n\n");
+
+    File file = new File("src/assignment/java/oop/FM data/purchase_orders.txt");
+    if (!file.exists()) {
+        txtReportArea.setText("purchase_orders.txt file not found.");
+        return;
+    }
+
+    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts.length >= 6 && parts[5].equalsIgnoreCase("Approved")) {
+                if (!parts[6].startsWith(filterMonth)) continue;
+                String poID = parts[0];
+                String supplier = parts[1];
+                String item = parts[2];
+                int qty = Integer.parseInt(parts[3]);
+                double unitPrice = Double.parseDouble(parts[4]);
+                double total = qty * unitPrice;
+
+                report.append(String.format("PO ID: %s | Supplier: %s | Item: %s | Qty: %d | RM %.2f\n",
+                        poID, supplier, item, qty, total));
+                paidCount++;
+                totalAmount += total;
+            }
+        }
+
+        report.append("\n-----------------------------\n");
+        report.append("Total Paid POs: ").append(paidCount).append("\n");
+        report.append(String.format("Total Payments Made: RM %.2f", totalAmount));
+
+        txtReportArea.setText(report.toString());
+
+    } catch (IOException | NumberFormatException e) {
+        JOptionPane.showMessageDialog(this,
+                "Error reading purchase_orders.txt:\n" + e.getMessage(),
+                "File Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton generateButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtMonth;
+    private javax.swing.JTextArea txtReportArea;
     // End of variables declaration//GEN-END:variables
 }

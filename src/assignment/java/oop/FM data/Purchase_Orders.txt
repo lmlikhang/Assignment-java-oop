@@ -1,5 +1,5 @@
-PO001,Dell,Monitor,10,Approved
-PO002,HP,Laptop,5,Approved
-PO003,Asus,Motherboard,8,Pending
-PO004,Lenovo,Keyboard,15,Pending
-PO005,Acer,Mouse,20,Declined
+PO001,SupplierA,Rice (10kg),100,200.90,Approved,2025-05-09
+PO002,SupplierB,Cooking Oil (2L),60,100.78,Approved,2025-05-21
+PO003,SupplierC,Bread,150,40.80,Pending,2025-05-28
+PO004,SupplierD,Canned Sardines,70,70,Pending,2025-06-04
+PO005,SupplierE,Fresh Eggs,500,350,Pending,2025-06-27

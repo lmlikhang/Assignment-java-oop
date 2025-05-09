@@ -73,6 +73,11 @@ public class Finance_Manager extends javax.swing.JFrame {
         BtnProcessPayments.setText("Process Payments ");
 
         BtnGenerateFinancialReports.setText("Generate Financial Reports ");
+        BtnGenerateFinancialReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGenerateFinancialReportsActionPerformed(evt);
+            }
+        });
 
         BtnViewPRs_POs.setText("View PRs and POs");
 
@@ -165,6 +170,10 @@ public class Finance_Manager extends javax.swing.JFrame {
         loadPanel(new assignment.java.oop.panelsFM.InventoryUpdate_Panel());
     }//GEN-LAST:event_BtnViewInventoryActionPerformed
 
+    private void BtnGenerateFinancialReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGenerateFinancialReportsActionPerformed
+        loadPanel(new assignment.java.oop.panelsFM.FinancialReports_Panel());
+    }//GEN-LAST:event_BtnGenerateFinancialReportsActionPerformed
+
     private void loadPanel(JPanel panel) {
     mainContentPanel.removeAll();
     mainContentPanel.setLayout(new GridBagLayout());
@@ -174,9 +183,9 @@ public class Finance_Manager extends javax.swing.JFrame {
 
     
     if (panel instanceof assignment.java.oop.panelsFM.InventoryUpdate_Panel) {
-        wrapper.setPreferredSize(new Dimension(500, 350)); 
+        wrapper.setPreferredSize(new Dimension(600, 350)); 
     } else {
-        wrapper.setPreferredSize(new Dimension(500, 350)); 
+        wrapper.setPreferredSize(new Dimension(600, 350)); 
     }
 
     wrapper.add(panel, BorderLayout.CENTER);

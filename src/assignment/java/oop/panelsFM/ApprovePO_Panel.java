@@ -27,9 +27,9 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     
     public ApprovePO_Panel() {
         initComponents();
-        String[] columnNames = {"PO ID", "Supplier", "Item Name", "Quantity", "Status"};
+        String[] columnNames = {"PO ID", "Supplier", "Item Name", "Quantity", "Price(RM)", "Status", "Date"};
         model = (DefaultTableModel) jTable1.getModel();
-        loadPurchaseOrdersFromFile(); // load file data
+        loadPurchaseOrdersFromFile();
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         loadPurchaseOrdersFromFile();
