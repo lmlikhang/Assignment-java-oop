@@ -171,17 +171,17 @@ public class Finance_Manager extends javax.swing.JFrame {
 
     JPanel wrapper = new JPanel();
     wrapper.setLayout(new BorderLayout());
-    wrapper.setPreferredSize(new Dimension(500,350)); // adjust size
+    wrapper.setPreferredSize(new Dimension(500,350));
     wrapper.add(panel, BorderLayout.CENTER);
-    wrapper.setOpaque(false); // Make wrapper transparent if needed
+    wrapper.setOpaque(false);
     wrapper.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
 
 
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
-    gbc.anchor = GridBagConstraints.CENTER; // Center it
-    gbc.insets = new java.awt.Insets(50, 50, 50, 50); // add margins top, left, bottom, right
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.insets = new java.awt.Insets(50, 50, 50, 50);
 
     mainContentPanel.add(wrapper, gbc);
 
