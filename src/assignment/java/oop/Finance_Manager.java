@@ -171,11 +171,17 @@ public class Finance_Manager extends javax.swing.JFrame {
 
     JPanel wrapper = new JPanel();
     wrapper.setLayout(new BorderLayout());
-    wrapper.setPreferredSize(new Dimension(500,350));
+
+    
+    if (panel instanceof assignment.java.oop.panelsFM.InventoryUpdate_Panel) {
+        wrapper.setPreferredSize(new Dimension(500, 350)); 
+    } else {
+        wrapper.setPreferredSize(new Dimension(500, 350)); 
+    }
+
     wrapper.add(panel, BorderLayout.CENTER);
     wrapper.setOpaque(false);
     wrapper.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
-
 
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.gridx = 0;
@@ -184,7 +190,6 @@ public class Finance_Manager extends javax.swing.JFrame {
     gbc.insets = new java.awt.Insets(50, 50, 50, 50);
 
     mainContentPanel.add(wrapper, gbc);
-
     mainContentPanel.revalidate();
     mainContentPanel.repaint();
 }

@@ -6,6 +6,7 @@ package assignment.java.oop.panelsFM;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.io.*;
 
@@ -29,7 +30,6 @@ public class InventoryUpdate_Panel extends javax.swing.JPanel {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 4) {
-                    // No status column, default to "Pending"
                     model.addRow(new String[]{parts[0], parts[1], parts[2], parts[3], "Pending"});
                 } else if (parts.length == 5) {
                 model.addRow(parts);
@@ -41,6 +41,41 @@ public class InventoryUpdate_Panel extends javax.swing.JPanel {
                     "File Error", JOptionPane.ERROR_MESSAGE);
         }
         tblInventory.setModel(model);
+        
+        tblInventory.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tblInventory.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tblInventory.getColumnModel().getColumn(2).setPreferredWidth(70);
+        tblInventory.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblInventory.getColumnModel().getColumn(4).setPreferredWidth(80);
+        
+        tblInventory.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+        boolean isSelected, boolean hasFocus, int row, int column) {
+
+    Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+    String status = (String) model.getValueAt(row, 4);
+
+    if (isSelected) {
+        c.setBackground(new Color(51, 153, 255)); 
+        c.setForeground(Color.WHITE);             
+    } else {
+        if ("Verified".equalsIgnoreCase(status)) {
+            c.setBackground(new Color(200, 255, 200)); // green
+        } else if ("Rejected".equalsIgnoreCase(status)) {
+            c.setBackground(new Color(255, 200, 200)); // red
+        } else {
+            c.setBackground(Color.WHITE);
+        }
+        c.setForeground(Color.BLACK);
+    }
+
+    return c;
+
+    }
+});
+        
     }
      
      private void verifySelectedRow() {
@@ -110,6 +145,11 @@ public class InventoryUpdate_Panel extends javax.swing.JPanel {
         });
 
         btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,15 +159,16 @@ public class InventoryUpdate_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(btnVerify)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnReject)))
-                .addContainerGap(181, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(231, 231, 231)
+                                .addComponent(btnVerify)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnReject)))
+                        .addGap(0, 229, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,8 +187,31 @@ public class InventoryUpdate_Panel extends javax.swing.JPanel {
 
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
         verifySelectedRow();
+        btnReject = new javax.swing.JButton();
+        btnReject.setText("Reject");
+        btnReject.setBackground(Color.RED);
+        btnReject.setForeground(Color.BLACK);
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRejectActionPerformed(evt);
+    }
+});
+
         
     }//GEN-LAST:event_btnVerifyActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        int selectedRow = tblInventory.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to reject.");
+        return;
+    }
+
+    model.setValueAt("Rejected", selectedRow, 4);
+    saveToFile();
+    tblInventory.repaint();
+    JOptionPane.showMessageDialog(this, "Inventory update marked as Rejected.");
+    }//GEN-LAST:event_btnRejectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
