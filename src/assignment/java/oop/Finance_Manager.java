@@ -41,7 +41,6 @@ public class Finance_Manager extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         BtnApprovePO = new javax.swing.JButton();
-        BtnModifyPO = new javax.swing.JButton();
         BtnViewInventory = new javax.swing.JButton();
         BtnProcessPayments = new javax.swing.JButton();
         BtnGenerateFinancialReports = new javax.swing.JButton();
@@ -60,8 +59,6 @@ public class Finance_Manager extends javax.swing.JFrame {
                 BtnApprovePOActionPerformed(evt);
             }
         });
-
-        BtnModifyPO.setText("Modify PO (quantity/supplier)");
 
         BtnViewInventory.setText("View Inventory Updates");
         BtnViewInventory.addActionListener(new java.awt.event.ActionListener() {
@@ -87,17 +84,17 @@ public class Finance_Manager extends javax.swing.JFrame {
 
         Btnlgout.setText("Log Out");
 
-        mainContentPanel.setBackground(new java.awt.Color(153, 153, 153));
+        mainContentPanel.setBackground(new java.awt.Color(255, 255, 204));
 
         javax.swing.GroupLayout mainContentPanelLayout = new javax.swing.GroupLayout(mainContentPanel);
         mainContentPanel.setLayout(mainContentPanelLayout);
         mainContentPanelLayout.setHorizontalGroup(
             mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 657, Short.MAX_VALUE)
         );
         mainContentPanelLayout.setVerticalGroup(
             mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -107,9 +104,6 @@ public class Finance_Manager extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(Btnlgout))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(BtnApprovePO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -117,9 +111,12 @@ public class Finance_Manager extends javax.swing.JFrame {
                             .addComponent(BtnProcessPayments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BtnGenerateFinancialReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BtnViewPRs_POs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnModifyPO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Btnlgout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
                 .addComponent(mainContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,17 +126,15 @@ public class Finance_Manager extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(BtnApprovePO)
-                .addGap(44, 44, 44)
-                .addComponent(BtnModifyPO)
-                .addGap(54, 54, 54)
+                .addGap(47, 47, 47)
                 .addComponent(BtnViewInventory)
-                .addGap(55, 55, 55)
-                .addComponent(BtnProcessPayments)
-                .addGap(39, 39, 39)
+                .addGap(66, 66, 66)
                 .addComponent(BtnGenerateFinancialReports)
+                .addGap(62, 62, 62)
+                .addComponent(BtnProcessPayments)
                 .addGap(52, 52, 52)
                 .addComponent(BtnViewPRs_POs)
-                .addGap(51, 51, 51)
+                .addGap(91, 91, 91)
                 .addComponent(Btnlgout)
                 .addGap(21, 21, 21))
             .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,10 +178,15 @@ public class Finance_Manager extends javax.swing.JFrame {
 
     
     if (panel instanceof assignment.java.oop.panelsFM.InventoryUpdate_Panel) {
-        wrapper.setPreferredSize(new Dimension(600, 350)); 
+    wrapper.setPreferredSize(new Dimension(600, 400)); // Inventory panel
+    } else if (panel instanceof assignment.java.oop.panelsFM.FinancialReports_Panel) {
+    wrapper.setPreferredSize(new Dimension(600, 500)); // Financial reports
+    } else if (panel instanceof assignment.java.oop.panelsFM.ApprovePO_Panel) {
+    wrapper.setPreferredSize(new Dimension(600, 400)); // Approve PO
     } else {
-        wrapper.setPreferredSize(new Dimension(600, 350)); 
-    }
+    wrapper.setPreferredSize(new Dimension(600, 350)); // Default size
+}
+
 
     wrapper.add(panel, BorderLayout.CENTER);
     wrapper.setOpaque(false);
@@ -213,7 +213,6 @@ public class Finance_Manager extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnApprovePO;
     private javax.swing.JButton BtnGenerateFinancialReports;
-    private javax.swing.JButton BtnModifyPO;
     private javax.swing.JButton BtnProcessPayments;
     private javax.swing.JButton BtnViewInventory;
     private javax.swing.JButton BtnViewPRs_POs;

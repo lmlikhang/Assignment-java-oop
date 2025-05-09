@@ -6,6 +6,13 @@ package assignment.java.oop.panelsFM;
 
 import javax.swing.*;
 import java.io.*;
+import java.io.FileOutputStream;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
 /**
  *
  * @author user
@@ -34,6 +41,8 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtMonth = new javax.swing.JTextField();
+        btnPrint = new javax.swing.JButton();
+        btnExportPdf = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 204));
 
@@ -57,6 +66,20 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Choose Month");
 
+        btnPrint.setText("Print Report");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
+        btnExportPdf.setText("Export PDF");
+        btnExportPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportPdfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,14 +92,17 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81)
-                                .addComponent(generateButton)))))
-                .addContainerGap(257, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(132, 132, 132)
+                                    .addComponent(generateButton))
+                                .addComponent(btnPrint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnExportPdf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +116,11 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generateButton))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnPrint)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportPdf)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -98,10 +128,74 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
         generateReport();
     }//GEN-LAST:event_generateButtonActionPerformed
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        try {
+        boolean done = txtReportArea.print();
+        if (done) {
+            JOptionPane.showMessageDialog(this, "Report sent to printer.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Printing canceled.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error printing:\n" + e.getMessage());
+    }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void btnExportPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportPdfActionPerformed
+        try {
+        String content = txtReportArea.getText();
+        if (content.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Report is empty. Generate it first.");
+            return;
+        }
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Save PDF");
+        fileChooser.setSelectedFile(new java.io.File("Financial_Report.pdf"));
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            java.io.File fileToSave = fileChooser.getSelectedFile();
+
+            Document document = new Document();
+            PdfWriter.getInstance(document, new java.io.FileOutputStream(fileToSave));
+            document.open();
+            document.add(new Paragraph(content));
+            document.close();
+
+            JOptionPane.showMessageDialog(this, "PDF saved to:\n" + fileToSave.getAbsolutePath());
+        }
+
+    } catch (DocumentException | IOException e) {
+        JOptionPane.showMessageDialog(this, "Error exporting to PDF:\n" + e.getMessage());
+    }
+    }//GEN-LAST:event_btnExportPdfActionPerformed
+
+    private String convertToDatePrefix(String input) {
+    try {
+        java.text.DateFormat inputFormat = new java.text.SimpleDateFormat("MMMM yyyy"); 
+        java.util.Date date = inputFormat.parse(input);
+        java.text.DateFormat outputFormat = new java.text.SimpleDateFormat("yyyy-MM");  
+        return outputFormat.format(date);
+    } catch (java.text.ParseException e) {
+        return null;
+    }
+}
+
     private void generateReport() {
-        String filterMonth = txtMonth.getText().trim();
+        
         int paidCount = 0;
         double totalAmount = 0;
+        String userInput = txtMonth.getText().trim();
+        String filterMonth = convertToDatePrefix(userInput); 
+        if (filterMonth == null) {
+        JOptionPane.showMessageDialog(this, "Please enter month as 'Month YYYY' (e.g., May 2025)");
+        return;
+    }
+        
+    
+    
+
         StringBuilder report = new StringBuilder("=== Financial Report ===\n\n");
 
     File file = new File("src/assignment/java/oop/FM data/purchase_orders.txt");
@@ -144,6 +238,8 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
     }
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExportPdf;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton generateButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

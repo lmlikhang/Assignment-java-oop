@@ -35,7 +35,7 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         loadPurchaseOrdersFromFile();
 
         
-        jTable1.getColumnModel().getColumn(4).setCellRenderer(new StatusColorRenderer());
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(new StatusColorRenderer());
 
 
     }
@@ -47,7 +47,7 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         
         java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        // Color based on Status value
+       
         if ("Approved".equals(value)) {
             c.setForeground(new java.awt.Color(0, 153, 0)); 
         } else if ("Declined".equals(value)) {
@@ -96,17 +96,17 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "PO ID", "Supplier", "Item Name", "Quantity", "Status"
+                "PO ID", "Supplier", "Item Name", "Quantity", "Price (RM)", "Status", "Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -133,21 +133,20 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(149, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(BtnApprove)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(BtnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
+                .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +165,7 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     private void BtnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApproveActionPerformed
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
-            model.setValueAt("Approved", selectedRow, 4);
+            model.setValueAt("Approved", selectedRow, 5);
             saveTableToFile();
         } else {
            JOptionPane.showMessageDialog(this, "Please sele a row first!");
@@ -177,7 +176,7 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     private void BtnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeclineActionPerformed
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
-            model.setValueAt("Declined", selectedRow, 4);
+            model.setValueAt("Declined", selectedRow, 5);
             saveTableToFile();
         } else {
         JOptionPane.showMessageDialog(this, "Please select a row first!");
@@ -190,9 +189,10 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         String line;
         while ((line = reader.readLine()) != null) {
             String[] rowData = line.split(",");
-            if (rowData.length == 5) { 
-                model.addRow(rowData);
-            }
+             if (rowData.length >= 7) {
+             model.addRow(rowData);
+
+           }
         }
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error loading file:\n" + e.getMessage());
