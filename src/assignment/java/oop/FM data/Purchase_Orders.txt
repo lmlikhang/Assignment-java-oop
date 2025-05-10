@@ -1,6 +1,6 @@
 PO001,SupplierA,Rice (10kg),100,20.90,Paid,2025-05-09
 PO002,SupplierB,Cooking Oil (2L),60,14.50,Pending,2025-05-21
-PO003,SupplierC,Bread,150,40.80,Pending,2025-05-28
+PO003,SupplierC,Bread,150,40.80,Paid,2025-05-28
 PO004,SupplierD,Canned Sardines,70,4.50,Pending,2025-06-04
 PO005,SupplierE,Fresh Eggs,500,3.50,Approved,2025-06-27
 PO006,SupplierF,Instant Noodles,200,1.20,Pending,2025-07-01

@@ -1,0 +1,10 @@
+PR001,SalesManager,Rice (10kg),100,SupplierA,Pending,2025-05-05
+PR002,SalesManager,Cooking Oil (2L),60,SupplierB,Pending,2025-05-10
+PR003,SalesManager,Instant Noodles,200,SupplierF,Pending,2025-05-15
+PR004,SalesManager,Frozen Pizza,50,SupplierK,Approved,2025-06-01
+PR005,SalesManager,Toilet Paper (12 pack),75,SupplierI,Pending,2025-06-03
+PR006,SalesManager,Soy Milk (1L),120,SupplierG,Pending,2025-06-08
+PR007,SalesManager,Peanut Butter,90,SupplierH,Pending,2025-06-12
+PR008,SalesManager,Bottled Water (1.5L),300,SupplierL,Approved,2025-06-15
+PR009,SalesManager,Laundry Detergent,60,SupplierN,Pending,2025-06-20
+PR010,SalesManager,Shampoo (500ml),100,SupplierO,Pending,2025-06-25

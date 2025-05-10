@@ -1,6 +1,6 @@
 T001,Laptop (Dell XPS 13),35,2025-05-01,Verified
 T002,Mechanical Keyboard (Logitech G Pro X),58,2025-05-02,Pending
-T003,SSD 1TB (Samsung 980 Pro),44,2025-05-03,Pending
+T003,SSD 1TB (Samsung 980 Pro),44,2025-05-03,Verified
 T004,Monitor 27" (LG UltraFine),27,2025-05-04,Pending
 T005,Wireless Mouse (Razer Basilisk),62,2025-05-05,Pending
 T006,Graphics Card (NVIDIA RTX 4060),18,2025-05-06,Verified

@@ -82,12 +82,22 @@ public class Finance_Manager extends javax.swing.JFrame {
         });
 
         BtnViewPRs_POs.setText("View PRs and POs");
+        BtnViewPRs_POs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnViewPRs_POsActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Financial Manager ");
 
         Btnlgout.setText("Log Out");
+        Btnlgout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnlgoutActionPerformed(evt);
+            }
+        });
 
         mainContentPanel.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -178,6 +188,15 @@ public class Finance_Manager extends javax.swing.JFrame {
         loadPanel(new assignment.java.oop.panelsFM.ProcessPayments_Panel());
     }//GEN-LAST:event_BtnProcessPaymentsActionPerformed
 
+    private void BtnViewPRs_POsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewPRs_POsActionPerformed
+        loadPanel(new assignment.java.oop.panelsFM.ViewPRsPOs_Panel());
+    }//GEN-LAST:event_BtnViewPRs_POsActionPerformed
+
+    private void BtnlgoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnlgoutActionPerformed
+        this.dispose(); 
+        new MainF().setVisible(true); 
+    }//GEN-LAST:event_BtnlgoutActionPerformed
+
     private void loadPanel(JPanel panel) {
     mainContentPanel.removeAll();
     mainContentPanel.setLayout(new GridBagLayout());
@@ -188,13 +207,16 @@ public class Finance_Manager extends javax.swing.JFrame {
     
     if (panel instanceof assignment.java.oop.panelsFM.InventoryUpdate_Panel) {
     wrapper.setPreferredSize(new Dimension(600, 400)); // Inventory panel
-    } else if (panel instanceof assignment.java.oop.panelsFM.FinancialReports_Panel) {
+} else if (panel instanceof assignment.java.oop.panelsFM.FinancialReports_Panel) {
     wrapper.setPreferredSize(new Dimension(600, 500)); // Financial reports
-    } else if (panel instanceof assignment.java.oop.panelsFM.ApprovePO_Panel) {
+} else if (panel instanceof assignment.java.oop.panelsFM.ApprovePO_Panel) {
     wrapper.setPreferredSize(new Dimension(600, 400)); // Approve PO
-    } else {
+} else if (panel instanceof assignment.java.oop.panelsFM.ViewPRsPOs_Panel) {
+    wrapper.setPreferredSize(new Dimension(600, 600)); // PRs and POs panel (larger)
+} else {
     wrapper.setPreferredSize(new Dimension(600, 350)); // Default size
 }
+
 
 
     wrapper.add(panel, BorderLayout.CENTER);
