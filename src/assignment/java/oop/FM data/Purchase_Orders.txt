@@ -1,5 +1,15 @@
-PO001,SupplierA,Rice (10kg),100,20.90,Approved,2025-05-09
-PO002,SupplierB,Cooking Oil (2L),60,14.50,Approved,2025-05-21
-PO003,SupplierC,Bread,150,40.18,Pending,2025-05-28
-PO004,SupplierD,Sardine tin,70,4.50,Pending,2025-06-04
-PO005,SupplierE,Fresh Eggs,500,3.50,Pending,2025-06-27
+PO001,SupplierA,Rice (10kg),100,20.90,Paid,2025-05-09
+PO002,SupplierB,Cooking Oil (2L),60,14.50,Pending,2025-05-21
+PO003,SupplierC,Bread,150,40.80,Pending,2025-05-28
+PO004,SupplierD,Canned Sardines,70,4.50,Pending,2025-06-04
+PO005,SupplierE,Fresh Eggs,500,3.50,Approved,2025-06-27
+PO006,SupplierF,Instant Noodles,200,1.20,Pending,2025-07-01
+PO007,SupplierG,Soy Milk (1L),120,2.80,Approved,2025-07-05
+PO008,SupplierH,Peanut Butter,90,6.40,Pending,2025-07-07
+PO009,SupplierI,Toilet Paper (12 pack),75,12.90,Pending,2025-07-08
+PO010,SupplierJ,Cooking Salt (1kg),110,1.10,Pending,2025-07-10
+PO011,SupplierK,Frozen Pizza,50,9.99,Declined,2025-07-11
+PO012,SupplierL,Bottled Water (1.5L),300,0.90,Pending,2025-07-12
+PO013,SupplierM,Green Tea (Box),80,5.20,Pending,2025-07-13
+PO014,SupplierN,Laundry Detergent,60,15.75,Pending,2025-07-15
+PO015,SupplierO,Shampoo (500ml),100,7.40,Pending,2025-07-18

@@ -68,6 +68,11 @@ public class Finance_Manager extends javax.swing.JFrame {
         });
 
         BtnProcessPayments.setText("Process Payments ");
+        BtnProcessPayments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProcessPaymentsActionPerformed(evt);
+            }
+        });
 
         BtnGenerateFinancialReports.setText("Generate Financial Reports ");
         BtnGenerateFinancialReports.addActionListener(new java.awt.event.ActionListener() {
@@ -84,17 +89,17 @@ public class Finance_Manager extends javax.swing.JFrame {
 
         Btnlgout.setText("Log Out");
 
-        mainContentPanel.setBackground(new java.awt.Color(255, 255, 204));
+        mainContentPanel.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout mainContentPanelLayout = new javax.swing.GroupLayout(mainContentPanel);
         mainContentPanel.setLayout(mainContentPanelLayout);
         mainContentPanelLayout.setHorizontalGroup(
             mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
+            .addGap(0, 522, Short.MAX_VALUE)
         );
         mainContentPanelLayout.setVerticalGroup(
             mainContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -128,11 +133,11 @@ public class Finance_Manager extends javax.swing.JFrame {
                 .addComponent(BtnApprovePO)
                 .addGap(47, 47, 47)
                 .addComponent(BtnViewInventory)
-                .addGap(66, 66, 66)
-                .addComponent(BtnGenerateFinancialReports)
-                .addGap(62, 62, 62)
+                .addGap(58, 58, 58)
                 .addComponent(BtnProcessPayments)
-                .addGap(52, 52, 52)
+                .addGap(57, 57, 57)
+                .addComponent(BtnGenerateFinancialReports)
+                .addGap(65, 65, 65)
                 .addComponent(BtnViewPRs_POs)
                 .addGap(91, 91, 91)
                 .addComponent(Btnlgout)
@@ -168,6 +173,10 @@ public class Finance_Manager extends javax.swing.JFrame {
     private void BtnGenerateFinancialReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGenerateFinancialReportsActionPerformed
         loadPanel(new assignment.java.oop.panelsFM.FinancialReports_Panel());
     }//GEN-LAST:event_BtnGenerateFinancialReportsActionPerformed
+
+    private void BtnProcessPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProcessPaymentsActionPerformed
+        loadPanel(new assignment.java.oop.panelsFM.ProcessPayments_Panel());
+    }//GEN-LAST:event_BtnProcessPaymentsActionPerformed
 
     private void loadPanel(JPanel panel) {
     mainContentPanel.removeAll();

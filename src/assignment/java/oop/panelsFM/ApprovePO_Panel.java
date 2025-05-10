@@ -18,6 +18,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.JTable;
+
 
 
 public class ApprovePO_Panel extends javax.swing.JPanel {
@@ -33,32 +38,31 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         loadPurchaseOrdersFromFile();
+        applyStatusColorRenderer();
 
-        
-        jTable1.getColumnModel().getColumn(5).setCellRenderer(new StatusColorRenderer());
 
 
     }
     
-    private static class StatusColorRenderer extends javax.swing.table.DefaultTableCellRenderer {
-    @Override
-    public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-        
-        java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-       
-        if ("Approved".equals(value)) {
-            c.setForeground(new java.awt.Color(0, 153, 0)); 
-        } else if ("Declined".equals(value)) {
-            c.setForeground(java.awt.Color.RED); 
-        } else {
-            c.setForeground(java.awt.Color.BLACK); 
-        }
-        
-        return c;
-    }
-}
+//    private static class StatusColorRenderer extends javax.swing.table.DefaultTableCellRenderer {
+//    @Override
+//    public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+//            boolean isSelected, boolean hasFocus, int row, int column) {
+//        
+//        java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//
+//       
+//        if ("Approved".equals(value)) {
+//            c.setForeground(new java.awt.Color(0, 153, 0)); 
+//        } else if ("Declined".equals(value)) {
+//            c.setForeground(java.awt.Color.RED); 
+//        } else {
+//            c.setForeground(java.awt.Color.BLACK); 
+//        }
+//        
+//        return c;
+//    }
+//}
     private void saveTableToFile() {
     String filePath = "src/assignment/java/oop/FM data/purchase_orders.txt"; 
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
@@ -163,24 +167,41 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApproveActionPerformed
-        int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow != -1) {
-            model.setValueAt("Approved", selectedRow, 5);
-            saveTableToFile();
-        } else {
-           JOptionPane.showMessageDialog(this, "Please sele a row first!");
-        }
+   
+    int row = jTable1.getSelectedRow();
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row first.");
+        return;
+    }
+
+    String currentStatus = model.getValueAt(row, 5).toString();
+    if (currentStatus.equalsIgnoreCase("Paid")) {
+        JOptionPane.showMessageDialog(this, "You cannot change the status of a Paid PO.");
+        return;
+    }
+
+    model.setValueAt("Approved", row, 5);
+    saveTableToFile();
 
     }//GEN-LAST:event_BtnApproveActionPerformed
 
     private void BtnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeclineActionPerformed
-        int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow != -1) {
-            model.setValueAt("Declined", selectedRow, 5);
-            saveTableToFile();
-        } else {
-        JOptionPane.showMessageDialog(this, "Please select a row first!");
+   
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow != -1) {
+        String currentStatus = model.getValueAt(selectedRow, 5).toString();
+        if (currentStatus.equalsIgnoreCase("Paid")) {
+            JOptionPane.showMessageDialog(this, "You cannot decline a PO that is already Paid.");
+            return;
         }
+
+        model.setValueAt("Declined", selectedRow, 5);
+        saveTableToFile();
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row first!");
+    }
+        
+        
     }//GEN-LAST:event_BtnDeclineActionPerformed
     
     private void loadPurchaseOrdersFromFile() {
@@ -190,14 +211,57 @@ public class ApprovePO_Panel extends javax.swing.JPanel {
         while ((line = reader.readLine()) != null) {
             String[] rowData = line.split(",");
              if (rowData.length >= 7) {
-             model.addRow(rowData);
-
-           }
+             model.addRow(new Object[] {
+        rowData[0], // PO ID
+        rowData[1], // Supplier
+        rowData[2], // Item Name
+        rowData[3], // Quantity
+        rowData[4], // Price
+        rowData[5], // Status
+        rowData[6]  // Date
+    });
+}
         }
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error loading file:\n" + e.getMessage());
     }
 }
+     private void applyStatusColorRenderer() {
+    jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            // Only style non-selected rows
+            if (!isSelected) {
+                try {
+                    String status = table.getValueAt(row, 5).toString(); 
+                    if ("Paid".equalsIgnoreCase(status)) {
+                        c.setBackground(new Color(180, 220, 255)); 
+                    } else if ("Approved".equalsIgnoreCase(status)) {
+                        c.setBackground(new Color(200, 255, 200)); 
+                    } else if ("Declined".equalsIgnoreCase(status)) {
+                        c.setBackground(new Color(255, 200, 200)); 
+                    } else {
+                        c.setBackground(Color.WHITE);
+                    }
+                } catch (Exception e) {
+                    c.setBackground(Color.WHITE);
+                }
+            } else {
+                c.setBackground(table.getSelectionBackground());
+            }
+
+            c.setForeground(Color.BLACK);
+            return c;
+        }
+    });
+}
+
+
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

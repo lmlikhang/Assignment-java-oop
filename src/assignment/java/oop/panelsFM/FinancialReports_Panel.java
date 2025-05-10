@@ -208,7 +208,7 @@ public class FinancialReports_Panel extends javax.swing.JPanel {
         String line;
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
-            if (parts.length >= 6 && parts[5].equalsIgnoreCase("Approved")) {
+            if (parts.length >= 6 && parts[5].equalsIgnoreCase("Paid")) {
                 if (!parts[6].startsWith(filterMonth)) continue;
                 String poID = parts[0];
                 String supplier = parts[1];
